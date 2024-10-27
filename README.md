@@ -9,7 +9,7 @@ This project is licensed under the MIT License. See the [LICENSE](https://github
 
 **step 2**: put [cbuild.bat](https://github.com/piotrkociakx/cbuild/blob/cf5e88dd072205be9a68f296a6756938348e5b64/cbuild.bat) inside your C project
 
-**step 3**: configure varables:
+**step 3**: configure:
 
 - Your project directory (where are all .C files)
 ```bat
