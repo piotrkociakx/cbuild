@@ -1,11 +1,13 @@
 # CBuild
 Simple compiler for C lang for windows using gcc from Mingw64.
 
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/piotrkociakx/cbuild/blob/cf5e88dd072205be9a68f296a6756938348e5b64/LICENSE) file for details.
+
 ## how to use?
 
-**step 1**: install mingw64 tutorial: https://www.freecodecamp.org/news/how-to-install-c-and-cpp-compiler-on-windows/
+**step 1**: install mingw64 tutorial: [link](https://www.freecodecamp.org/news/how-to-install-c-and-cpp-compiler-on-windows/)
 
-**step 2**: put cbuild.bat inside your C project
+**step 2**: put [cbuild.bat](https://github.com/piotrkociakx/cbuild/blob/cf5e88dd072205be9a68f296a6756938348e5b64/cbuild.bat) inside your C project
 
 **step 3**: configure varables:
 
