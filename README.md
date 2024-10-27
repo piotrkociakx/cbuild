@@ -32,3 +32,8 @@ set "INCLUDES=-I handler -I handler/commands -I handler/menu"
 ```
 
 **step 4**: Open cbuild.bat in vscode editor or just in cmd
+
+
+### Contant
+
+discord: **piotrkociakx**
