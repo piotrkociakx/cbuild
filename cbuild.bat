@@ -1,23 +1,23 @@
 @echo off
 
-rem Zmienne
+rem configuration
 
-:: source kod programu
+:: src of project
 set "SRC_DIR=C:\Users\piotr\Documents\C\cotDroid\src" 
-:: gdzie ma sie pojawic plik exe
+:: output dir for output file
 set "OUT_DIR=C:\Users\piotr\Documents\C\cotDroid\bin" 
-:: nazwa outputu
+:: output file name
 set "OUTPUT_FILE=app.exe"
-:: kompiler
+:: compiler
 set "COMPILER=gcc"
-:: cflagi
+:: c flags
 set "CFLAGS=-Wall"
-:: pliki projektu
+:: project files
 set "INCLUDES=-I handler -I handler/commands -I handler/menu"
-:: plik do statystyk (zaleca sie uzywac zawsze C:\cbuild\)
+:: stats file (is better to use just C:\cbuild\ dir)
 set "STATS_FILE=C:\cbuild\stats.txt"
 
-rem statystyki buildowania
+rem build stats
 if not exist "C:\cbuild" (
     mkdir "C:\cbuild"
     if errorlevel 1 (
@@ -34,7 +34,7 @@ if exist "%STATS_FILE%" (
     for /f "tokens=1,2 delims=:" %%a in ('findstr /c:"Failed Builds" "%STATS_FILE%"') do set "failed_builds=%%b"
 )
 
-rem proba stworzenia directory do outputa
+rem trying to create output directory 
 if not exist "%OUT_DIR%" (
     mkdir "%OUT_DIR%"
     if errorlevel 1 (
@@ -50,23 +50,23 @@ echo Building all .c files in %SRC_DIR% ...
 
 cd "%SRC_DIR%" || exit /b
 
-:: Usuwanie starego execa
+:: Remove old exe file
 del "%OUT_DIR%\%OUTPUT_FILE%" >nul 2>&1
 
 setlocal enabledelayedexpansion
 
-:: Zawartość execow (pliki projektu)
+:: Add files to executable file
 set "sources="
 
 for /R %%f in (*.c) do (
     set "sources=!sources! %%f"
 )
 
-:: Komenda kompilowania
+rem compile command
 %COMPILER% %CFLAGS% -o "%OUT_DIR%\%OUTPUT_FILE%" !sources! %INCLUDES%
 
 
-rem inne o statystykiach
+rem stats
 set /a total_builds+=1 
 
 if %errorlevel% neq 0 (
@@ -79,7 +79,7 @@ if %errorlevel% neq 0 (
     set /a successful_builds+=1 
 )
 
-rem metoda do wyswietlania statów
+rem display stats
 :display_stats
 echo.
 echo ===============================
@@ -110,7 +110,7 @@ if %total_builds% gtr 0 (
     echo ===============================
 ) > "%STATS_FILE%"
 
-rem pytanie sie czy chce sie jeszcze raz skompilwoac to
+rem rebuild?
 :ask_again
 echo.
 set /p answer=Do you want to build again? (y/n): 
@@ -122,4 +122,4 @@ goto ask_again
 :end
 cls
 color 0f
-echo Build finished.
+echo Build finished. Thank you for using cbuild!
